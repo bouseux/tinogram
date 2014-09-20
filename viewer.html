@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TinoGram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        var myFirebaseRef = new Firebase("https://tinogram.firebaseio.com");
+        myFirebaseRef.child("tests").on("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var tableRef = document.getElementById('table1').getElementsByTagName('tbody')[0];
+                var newRow   = tableRef.insertRow(0);
+                childSnapshot.forEach(function(smallerchild) {
+                    var newCell  = newRow.insertCell(newRow.cells.length);
+                    var s = "<img src='" + smallerchild.val() + "'/>";
+                    var div = document.createElement('div');
+                    div.innerHTML = s;
+                    newCell.appendChild(div);
+                });
+            });
+        });
+    </script>
+    <style>
+        .col-md {
+            margin: 0 auto;
+            width: 320px;
+        }
+        .col-lg {
+            float: left;
+            width: 240px;
+        }
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+        }
+        .fileUpload input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .status {
+            clear: both;
+            color: #9F0000;
+            font-size: 16px;
+            padding: 10px 0 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="margin-top:50px">
+    <center>
+        <div style="width:310px">
+            <div class="jumbotron">
+                <img src="imgurlogo.png" style="height:60px"/>
+                <p style="color:gray">View pics from around you!</p>
+            </div>
+            <FORM>
+            <INPUT TYPE="button" class="btn btn-large btn-primary" onClick="history.go(0)" VALUE="Refresh Results.">
+            </FORM>
+            <a href="index.html" class="btn btn-large btn-info">Back to upload</a>
+            <br>
+            <table class="table" id="table1"><tbody id="tablebody"></tbody></table>
+            </br>
+    </center>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>tinogram</title>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        .col-md {
+            margin: 0 auto;
+            width: 320px;
+        }
+        .col-lg {
+            float: left;
+            width: 240px;
+        }
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+        }
+        .fileUpload input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .status {
+            clear: both;
+            color: green;
+            font-size: 16px;
+            padding: 10px 0 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="margin-top:50px">
+    <center>
+        <div style="width:310px">
+            <div class="jumbotron">
+                <img src="imgurlogo.png" style="height:60px; margin-bottom:20px"/>
+                <p style="color:gray">TinoGram</p>
+            </div>
+            <br>
+            <div class="col-md" style="width:307px">
+                <div class="col-lg">
+                    <input class="form-control" id="uploadFile" type="text" placeholder="Choose File" disabled>
+                </div>
+                <div class="pull-right fileUpload btn btn-small btn-primary">
+                    <span>Upload</span>
+                    <input type="file" style="width:200px" class="upload" id="uploadBtn">
+                </div>
+                <div class="status"></div>
+            </div>
+            <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+            <script type="text/javascript" src="assets/js/app.js"></script>
+            <script>
+                (function() {
+                    Imgur.init();
+                }());
+            </script>
+        </div>
+        </br>
+        </br>
+        <FORM>
+        <INPUT TYPE="button" class="btn btn-success" onClick="history.go(0)" VALUE="Upload another.">
+        </FORM>
+        </br>
+        <a href="viewer.html" class="btn btn-warning">Check out Image Feed.</a>
+        <br>
+        <br>
+        <br>
+        <br>
+    </center>
+</body>
+</html>
